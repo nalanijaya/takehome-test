@@ -7,21 +7,24 @@ namespace Shuffle
 	{
 		//This is for the following logic:
 		// Input a single integer N. Output the positive integers less than N in random order.
-		public static List<int> Shuffle(int number)
+		public static int[] Shuffle(int number)
 		{
-			var numList = new List<int>();
+			int[] numList = new int[] { };
 
 			if (number <= 0) { //Skip negative and number 0
 				return numList;
 			} else {
 				Random rd = new Random();
+				int index = 0;
+				numList = new int[number - 1];
 				for (int i = 1; i < number; i++) { //O(n)
-					numList.Add(i);
+					numList[index] = i;
+					index++;
 				}
 
-				if (numList.Count > 0) {
-					for (int i = 0; i < numList.Count; i++){  //O(n)
-						int r = rd.Next(i, numList.Count - 1); //random index
+				if (numList.Length > 0) {
+					for (int i = 0; i < numList.Length; i++){  //O(n)
+						int r = rd.Next(i, numList.Length - 1); //random index
 															   //swapping
 						int temp = numList[r];
 						numList[r] = numList[i];

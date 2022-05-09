@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Linq;
 
 namespace Shuffle
 {
@@ -18,9 +19,9 @@ namespace Shuffle
 				var shuffleNumList = Logic.Shuffle(inputNumber);
 				sw.Stop();
 
-				if (shuffleNumList.Count > 0) {
+				if (shuffleNumList.Length > 0) {
 					Console.WriteLine();
-					shuffleNumList.ForEach(item => Console.Write(item + " "));
+					shuffleNumList.ToList().ForEach(item => Console.Write(item + " "));
 
 					Console.WriteLine();
 					Console.WriteLine();
