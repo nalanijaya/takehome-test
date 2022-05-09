@@ -8,13 +8,14 @@ namespace Shuffle
 		public static void Main()
 		{
 			Console.WriteLine("Please enter an integer");
-			var inputNumber = Console.ReadLine();
-
-			if (!string.IsNullOrEmpty(inputNumber))
+			var input = Console.ReadLine();
+			int inputNumber = 0;
+			if (!string.IsNullOrEmpty(input) && int.TryParse(input, out inputNumber))
 			{
 				Stopwatch sw = new Stopwatch();
 				sw.Start();
-				var shuffleNumList = Logic.Shuffle(Convert.ToInt32(inputNumber));
+
+				var shuffleNumList = Logic.Shuffle(inputNumber);
 				sw.Stop();
 
 				if (shuffleNumList.Count > 0) {
